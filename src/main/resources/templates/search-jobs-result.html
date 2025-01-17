@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Job Portal - Search Results">
+    <meta name="keywords" content="jobs, career opportunities, job search results">
+    <meta name="author" content="Job Portal">
+    <meta name="robots" content="index, follow">
+
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <title>Workify - Search Results</title>
+
+    <style>
+        :root {
+            --primary-color: #6A1B9A;
+            --secondary-color: #00897B;
+            --dark-color: #1f2937;
+            --light-color: #ffffff;
+            --gray-color: #f4f4f9;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            background-color: var(--gray-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.98);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-buttons {
+           display: flex;
+           gap: 1.5rem;
+           align-items: center;
+       }
+
+       .nav-btn {
+           padding: 0.8rem 2rem;
+           border: none;
+           border-radius: 25px;
+           cursor: pointer;
+           font-weight: 500;
+           transition: all 0.3s ease;
+       }
+
+       .register-btn {
+           background: var(--gradient);
+           color: white;
+       }
+
+       .login-btn {
+           background-color: transparent;
+           color: var(--primary-color);
+           border: 2px solid var(--primary-color);
+       }
+        .content {
+            flex: 1;
+            padding: 8rem 5% 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 2rem;
+            text-align: center;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .search-results {
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--dark-color);
+        }
+
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .job-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .job-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .job-card h3 {
+            color: var(--dark-color);
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--gray-color);
+        }
+        .logout-btn {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logout-btn:hover {
+            background: var(--gradient);
+            color: white;
+            border-color: transparent;
+        }
+
+        .job-detail {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+
+        .job-detail strong {
+            min-width: 120px;
+            color: var(--dark-color);
+        }
+
+        .action-btn {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+        }
+
+        .apply-btn {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .login-btn {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 115, 232, 0.4);
+        }
+
+        .login-btn:hover {
+            background: var(--gradient);
+            color: white;
+            border-color: transparent;
+        }
+
+        .home-btn {
+            background: var(--gradient);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .home-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 115, 232, 0.4);
+        }
+        .footer {
+           background-color: var(--dark-color);
+           color: white;
+           padding: 1.3rem 5%;
+       }
+
+       .footer-content {
+           max-width: 1200px;
+           margin: 0 auto;
+       }
+
+       .footer-links {
+           display: flex;
+           justify-content: center;
+           gap: 3rem;
+           margin-bottom: 2rem;
+       }
+
+       .footer-links a {
+           color: white;
+           text-decoration: none;
+           transition: color 0.3s ease;
+           position: relative;
+       }
+
+       .footer-links a::after {
+           content: '';
+           position: absolute;
+           width: 0;
+           height: 2px;
+           bottom: -5px;
+           left: 0;
+           background-color: var(--primary-color);
+           transition: width 0.3s ease;
+       }
+
+       .footer-links a:hover::after {
+           width: 100%;
+       }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 6rem 1rem 2rem;
+            }
+            .nav-buttons {
+               gap: 1rem;
+           }
+
+           .nav-btn {
+               padding: 0.6rem 1.5rem;
+           }
+            .jobs-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-links {
+               flex-direction: column;
+               align-items: center;
+               gap: 1.5rem;
+           }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/">
+                <img src="/assets/favicon.png" alt="Job Portal Logo" style="width: 150px; height: 50px; margin-right: 10px;">
+               
+            </a>
+        </div>
+        <a th:if="${session.jobSeeker}" href="/logout" class="logout-btn">Logout <i class="fas fa-sign-out-alt"></i></a>
+    
+        <div class="nav-buttons">
+            <a href="/login"><button class="nav-btn login-btn">Login</button></a>
+            <a href="/jobseeker/register"><button class="nav-btn register-btn">Register</button></a>
+        </div>
+    </nav>
+    
+
+        </div>
+    </nav>
+
+    <div class="content">
+        <h1 class="page-title">Search Results</h1>
+        <p class="search-results">Found <span th:text="${jobs.size()}"></span> matching jobs</p>
+
+        <div class="jobs-grid">
+            <div class="job-card" th:each="job:${jobs}">
+                <h3 th:text="${job.role}">Role</h3>
+                <div class="job-detail">
+                    <strong><i class="fas fa-building"></i> Company:</strong>
+                    <span th:text="${job.recruiter.companyName}"></span>
+                </div>
+                <div class="job-detail">
+                    <strong><i class="fas fa-money-bill-wave"></i> Package:</strong>
+                    <span th:text="${job.ctc}+' LPA'"></span>
+                </div>
+                <div class="job-detail">
+                    <strong><i class="fas fa-info-circle"></i> Description:</strong>
+                    <span th:text="${job.description}"></span>
+                </div>
+                <div class="job-detail">
+                    <strong><i class="fas fa-briefcase"></i> Experience:</strong>
+                    <span th:text="${job.experience}+' months'"></span>
+                </div>
+                <div class="job-detail">
+                    <strong><i class="fas fa-tools"></i> Skills:</strong>
+                    <span th:text="${job.skills}"></span>
+                </div>
+                <div class="job-detail">
+                    <strong><i class="fas fa-map-marker-alt"></i> Location:</strong>
+                    <span th:text="${job.location}"></span>
+                </div>
+                <div class="job-detail">
+                    <strong><i class="fas fa-user"></i> Recruiter:</strong>
+                    <span th:text="${job.recruiter.name}"></span>
+                </div>
+                <div class="job-detail">
+                    <strong><i class="fas fa-envelope"></i> Contact:</strong>
+                    <span th:text="${job.recruiter.email}"></span>
+                </div>
+
+                <a th:if="${session.jobSeeker}" th:href="'/jobseeker/apply/'+${job.id}">
+                    <button class="action-btn apply-btn">
+                        <i class="fas fa-paper-plane"></i> Apply Now
+                    </button>
+                </a>
+                <a th:if="${session.jobSeeker==null}" href="/login">
+                    <button class="action-btn login-btn">
+                        <i class="fas fa-sign-in-alt"></i> Login to Apply
+                    </button>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="/about-us">About Us</a>
+                <a href="/privacy-policy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

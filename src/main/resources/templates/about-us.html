@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Job Portal - Find your dream job" />
+    <meta name="keywords" content="jobs, career, employment, job search" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.png" />
+    <title>Workify - About Us</title>
+    <style>
+      :root {
+        --primary-color: #0d6efd;
+        --secondary-color: #6c757d;
+        --background-color: #f8f9fa;
+        --text-color: #212529;
+        --accent-color: #ffffff;
+        --shadow-color: rgba(0, 0, 0, 0.1);
+        --primary-color-b: #6a1b9a;
+        --secondary-color-b: #00897b;
+        --gradient: linear-gradient(
+          135deg,
+          var(--primary-color-b),
+          var(--secondary-color-b)
+        );
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+        line-height: 1.6;
+        font-size: 16px;
+      }
+
+      .navbar {
+        background-color: white;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 4px var(--shadow-color);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .navbar .logo {
+        color: var(--accent-color);
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      .navbar .nav-buttons {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .nav-buttons {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .nav-btn {
+        height: 50px;
+        
+
+        padding: 0.8rem 2rem;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .register-btn {
+        background: var(--gradient);
+        color: white;
+      }
+
+      .register-btn:hover {
+        background: var(--accent-color);
+        border: 2px solid var(--primary-color-b);
+        color: var(--primary-color-b);
+      }
+
+      .login-btn {
+        background: var(--accent-color);
+        border: 2px solid var(--primary-color-b);
+        color: var(--primary-color-b);
+      }
+
+      .login-btn:hover {
+        border: none;
+        background: var(--gradient);
+        color: white;
+      }
+      /*---------------------*/
+      .hero-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 4rem 2rem;
+        background: var(--gradient);
+        color: var(--accent-color);
+        min-height: 50vh;
+        text-align: center;
+        box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.4);
+      }
+
+      .hero-section h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      .hero-section p {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        font-style: italic;
+      }
+
+      .hero-section button {
+        background-color: var(--accent-color);
+        color: var(--primary-color-b);
+        padding: 0.8rem 2rem;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+      }
+
+      .hero-section button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 6px var(--shadow-color);
+      }
+
+      .about-section {
+        padding: 4rem 2rem;
+        text-align: center;
+      }
+
+      .about-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(
+    105deg,
+    var(--primary-color-b),
+    var(--secondary-color-b)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+            
+        font-weight: 600;
+      }
+
+      .about-section p {
+        font-size: 1.1rem;
+        color: var(--secondary-color);
+        margin-bottom: 2rem;
+        line-height: 1.8;
+        font-style: italic;
+      }
+
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      .team-member {
+        background-color: var(--accent-color);
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px var(--shadow-color);
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .team-member:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 10px var(--shadow-color);
+      }
+
+      .team-member img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        margin-bottom: 1.5rem;
+      }
+
+      .team-member h3 {
+        margin-bottom: 0.5rem;
+        color: var(--primary-color);
+        font-weight: 500;
+      }
+
+      .team-member p {
+        font-size: 1.1rem;
+        color: var(--secondary-color);
+        margin-top: 0.5rem;
+      }
+
+      .photo-section {
+        background-color: var(--secondary-color);
+        padding: 4rem 2rem;
+        color: var(--accent-color);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .photo-section img {
+        width: 45%;
+        height: 400px;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px var(--shadow-color);
+        margin-bottom: 2rem;
+      }
+
+      .footer {
+        background-color: var(--primary-color);
+        color: var(--accent-color);
+        text-align: center;
+        padding: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .footer a {
+        color: var(--accent-color);
+        text-decoration: none;
+        margin: 0 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .footer a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        .hero-section h1 {
+          font-size: 2rem;
+        }
+
+        .hero-section button {
+          font-size: 1rem;
+        }
+
+        .about-section h2 {
+          font-size: 2rem;
+        }
+
+        .team-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .photo-section img {
+          width: 90%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="/">
+          <img
+            src="/assets/favicon.png"
+            alt="Job Portal Logo"
+            style="width: 150px; height: 50px; margin-right: 10px"
+          />
+        </a>
+      </div>
+      <div class="nav-buttons">
+        <a href="/login"><button class="nav-btn login-btn">Login</button></a>
+        <a href="/jobseeker/register"
+          ><button class="nav-btn register-btn">Register</button></a
+        >
+      </div>
+    </nav>
+
+    <section class="hero-section">
+      <h1>Welcome to Workify</h1>
+      <p>Your trusted partner in career growth and job opportunities.</p>
+      <button onclick="location.href='/jobseeker/register'">Get Started</button>
+    </section>
+
+    <section class="about-section">
+      <h2>About Us</h2>
+      <p>
+        Workify connects professionals with top companies, leveraging technology
+        and expertise to simplify the job search process. Our mission is to
+        empower individuals and businesses to achieve success. Join us in
+        transforming your career journey.
+      </p>
+    </section>
+
+    <section class="photo-section">
+      <img
+        src="http://www.performance-breakthrough.com/wp-content/uploads/2015/07/bigstock-Teamwork-Team-Together-Collabo-80899649.jpg"
+        alt="Teamwork Image"
+      />
+      <img
+        src="https://images.vexels.com/media/users/3/124775/raw/77ee8800d21d53dd9c97a7fb2873f3d2-innovation-concept-illustration.jpg"
+        alt="Innovation Image"
+      />
+    </section>
+
+    <section class="about-section">
+      <h2>Our Team</h2>
+      <p>
+        Meet the minds behind Workify - a group of dedicated professionals
+        working towards a common goal.
+      </p>
+      <div class="team-grid">
+        <div class="team-member">
+          <img
+            src="https://randomuser.me/api/portraits/men/3.jpg"
+            alt="John Doe"
+          />
+          <h3>John Doe</h3>
+          <p>CEO & Founder</p>
+        </div>
+        <div class="team-member">
+          <img
+            src="https://randomuser.me/api/portraits/women/2.jpg"
+            alt="Jane Smith"
+          />
+          <h3>Jane Smith</h3>
+          <p>Head of Operations</p>
+        </div>
+        <div class="team-member">
+          <img
+            src="https://randomuser.me/api/portraits/men/4.jpg"
+            alt="Mike Johnson"
+          />
+          <h3>Mike Johnson</h3>
+          <p>Chief Technology Officer</p>
+        </div>
+        <div class="team-member">
+          <img
+            src="https://randomuser.me/api/portraits/women/3.jpg"
+            alt="Sara Williams"
+          />
+          <h3>Sara Williams</h3>
+          <p>Lead Developer</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>&copy; 2025 Workify. All rights reserved.</p>
+      <div>
+        <a href="/about-us">About Us</a> |
+        <a href="/terms">Terms & Conditions</a> |
+        <a href="/privacy-policy">Privacy Policy</a> 
+        
+      </div>
+    </footer>
+  </body>
+</html>

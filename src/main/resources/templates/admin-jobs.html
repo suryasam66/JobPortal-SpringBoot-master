@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Job Portal - Admin Job Management">
+    <meta name="keywords" content="admin dashboard, job management, job listings">
+    <meta name="author" content="Job Portal">
+    <meta name="robots" content="index, follow">
+
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <title>Workify - Admin Jobs</title>
+
+    <style>
+         :root {
+            --primary-color: #6A1B9A;
+            --secondary-color: #00897B;
+            --dark-color: #1f2937;
+            --light-color: #ffffff;
+            --gray-color: #f4f4f9;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            background-color: var(--gray-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.98);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        .dashboard-container {
+            flex: 1;
+            padding: 8rem 5% 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-bottom: -120px;
+        }
+
+        .dashboard-title {
+            font-size: 2.8rem;
+            color: var(--gradient);
+            margin-bottom: 2rem;
+            text-align: center;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            color: var(--dark-color);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .intro-section {
+            margin-top: 5%;
+            background: var(--light-color);
+            padding: 2rem 5%;
+            margin-bottom: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .intro-section h2 {
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .intro-section p {
+            color: var(--dark-color);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .intro-section .data {
+            margin-top: 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .intro-section .data div {
+            background: var(--primary-color);
+            color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .intro-section .data div h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .content {
+            flex: 1;
+            padding: 8rem 5% 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            margin-bottom: 80px;
+        }
+
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+           
+
+        }
+
+        .job-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px var(--secondary-color);
+           
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px var(--primary-color);
+        }
+
+        .job-card h3 {
+            color: var(--dark-color);
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--gray-color);
+        }
+
+        .job-detail {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+
+        .job-detail strong {
+            min-width: 120px;
+            color: var(--dark-color);
+        }
+
+        .status-btn {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--gradient);
+            color: white;
+            margin-top: 1.5rem;
+        }
+
+        .status-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 115, 232, 0.4);
+        }
+
+        .logout-btn {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logout-btn:hover {
+            background: var(--gradient);
+            color: white;
+            border-color: transparent;
+        }
+
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 1.3rem 5%;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .alert-message {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            z-index: 1000;
+            animation: slideIn 0.5s ease-out;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .success {
+            background-color: rgba(52, 168, 83, 0.1);
+            color: var(--secondary-color);
+            border: 1px solid var(--secondary-color);
+        }
+
+        .error {
+            background-color: rgba(234, 67, 53, 0.1);
+            color: #ea4335;
+            border: 1px solid #ea4335;
+        }
+
+        .alert-close {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: inherit;
+        }
+
+        .action-buttons {
+            margin-top: 1.5rem;
+        }
+
+        .approve-btn {
+            background: var(--gradient);
+        }
+        .approve-btn:hover {
+            background:white;
+            color: var(--secondary-color);
+            border: 2px solid var(--secondary-color);
+        }
+
+        .reject-btn {
+            background: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        .reject-btn:hover {
+            background: var(--gradient);
+            color: white;
+            border: none;
+        }
+
+        .status-btn i {
+            margin-right: 0.5rem;
+        }
+
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+
+        @media (max-width: 768px) {
+            .jobs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content {
+                padding: 6rem 1rem 2rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div th:if="${session.success}" class="alert-message success">
+        <span th:text="${session.success}"></span>
+        <button class="alert-close" onclick="this.parentElement.style.display='none'">×</button>
+        <th:block th:text="${@messageRemover.remove()}"></th:block>
+    </div>
+    <div th:if="${session.error}" class="alert-message error">
+        <span th:text="${session.error}"></span>
+        <button class="alert-close" onclick="this.parentElement.style.display='none'">×</button>
+        <th:block th:text="${@messageRemover.remove()}"></th:block>
+    </div>
+
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/">
+                <img src="/assets/favicon.png" alt="Job Portal Logo" style="width: 150px; height: 50px; margin-right: 10px;">
+               Admin
+            </a>
+        </div>
+        <a href="/logout" class="logout-btn">Logout <i class="fas fa-sign-out-alt"></i></a>
+    </nav>
+
+    <div class="dashboard-container">
+        <h1 class="dashboard-title">Admin Job Management Portal</h1>
+        <p class="description">
+            Efficiently manage job postings with the Admin Job Management Portal. Create, update,
+             and remove job listings, oversee application statuses, and streamline the hiring process. 
+             Built for user-friendly navigation and robust functionality, the portal ensures smooth
+              operations for recruiters and administrators.
+        </p>
+
+    </div>
+
+    <div class="content">
+        <div class="jobs-grid">
+            <div class="job-card" th:each="job:${jobs}">
+                <h3 th:text="${job.role}">Role</h3>
+                <div class="job-detail">
+                    <strong>Company:</strong>
+                    <span th:text="${job.recruiter.companyName}"></span>
+                </div>
+                <div class="job-detail">
+                    <strong>Package:</strong>
+                    <span th:text="${job.ctc}+' LPA'"></span>
+                </div>
+                <div class="job-detail">
+                    <strong>Description:</strong>
+                    <span th:text="${job.description}"></span>
+                </div>
+                <div class="job-detail">
+                    <strong>Experience:</strong>
+                    <span th:text="${job.experience}+' years'"></span>
+                </div>
+                <div class="job-detail">
+                    <strong>Skills:</strong>
+                    <span th:text="${job.skills}"></span>
+                </div>
+                <div class="job-detail">
+                    <strong>Location:</strong>
+                    <span th:text="${job.location}"></span>
+                </div>
+                <div class="job-detail">
+                    <strong>Recruiter:</strong>
+                    <span th:text="${job.recruiter.name}"></span>
+                </div>
+                <div class="job-detail">
+                    <strong>Contact:</strong>
+                    <span th:text="${job.recruiter.email}"></span>
+                </div>
+                <div class="action-buttons">
+                    <a th:if="${!job.approved}" th:href="'/admin/change/'+${job.id}">
+                        <button class="status-btn approve-btn">
+                            <i class="fas fa-check-circle"></i> Approve Job
+                        </button>
+                    </a>
+                    <a th:if="${job.approved}" th:href="'/admin/change/'+${job.id}">
+                        <button class="status-btn reject-btn">
+                            <i class="fas fa-ban"></i> Reject Job
+                        </button>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="/about-us">About Us</a>
+                <a href="/privacy-policy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const alerts = document.querySelectorAll('.alert-message');
+            alerts.forEach(alert => {
+                setTimeout(() => {
+                    alert.style.display = 'none';
+                }, 2000);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

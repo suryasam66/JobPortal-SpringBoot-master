@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Job Portal - My Applications" />
+    <meta name="keywords" content="jobs, applications, status" />
+    <meta name="author" content="Job Portal" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <title>Workify - My Applications</title>
+
+    <style>
+      :root {
+        --primary-color: #6a1b9a;
+        --secondary-color: #00897b;
+        --dark-color: #1f2937;
+        --light-color: #ffffff;
+        --gray-color: #f4f4f9;
+        --gradient: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        line-height: 1.6;
+        background-color: var(--gray-color);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .navbar {
+        background-color: rgba(255, 255, 255, 0.98);
+        padding: 1rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .logo a {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
+
+      .content {
+        flex: 1;
+        padding: 8rem 5% 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .page-title {
+        font-size: 2.5rem;
+        color: var(--dark-color);
+        margin-bottom: 2rem;
+        text-align: center;
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .alert-message {
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        z-index: 1000;
+        animation: slideIn 0.5s ease-out;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .success {
+        background-color: rgba(52, 168, 83, 0.1);
+        color: var(--secondary-color);
+        border: 1px solid var(--secondary-color);
+      }
+
+      .error {
+        background-color: rgba(234, 67, 53, 0.1);
+        color: #ea4335;
+        border: 1px solid #ea4335;
+      }
+
+      .status-badge {
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-weight: 500;
+        display: inline-block;
+        margin-top: 1rem;
+      }
+      .logout-btn {
+        background: transparent;
+        color: var(--primary-color);
+        border: 2px solid var(--primary-color);
+        padding: 0.8rem 2rem;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .logout-btn:hover {
+        background: var(--gradient);
+        color: white;
+        border-color: transparent;
+      }
+      .status-pending {
+        background-color: #fef3c7;
+        color: #d97706;
+        border: 1px solid #d97706;
+      }
+
+      .status-accepted {
+        background-color: #dcfce7;
+        color: #15803d;
+        border: 1px solid #15803d;
+      }
+
+      .status-rejected {
+        background-color: #fee2e2;
+        color: #dc2626;
+        border: 1px solid #dc2626;
+      }
+
+      .page-description {
+        font-size: 1.2rem;
+        color: #666;
+        margin-bottom: 2rem;
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .jobs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .job-card {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .job-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .job-card h3 {
+        font-size: 1.2em;
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      .job-detail {
+        font-size: 0.9em;
+        margin-bottom: 10px;
+        color: #555;
+      }
+
+      .job-detail strong {
+        font-weight: bold;
+        color: var(--primary-color);
+      }
+
+      .job-detail i {
+        margin-right: 10px;
+        color: var(--primary-color);
+      }
+
+      .status-badge {
+        padding: 5px 10px;
+        border-radius: 15px;
+        color: white;
+        font-weight: bold;
+      }
+
+      .status-pending {
+        background-color: #f39c12;
+      }
+
+      .job-card .job-detail span {
+        display: inline-block;
+        margin-left: 10px;
+        color: #333;
+      }
+
+      @media (max-width: 768px) {
+        .jobs-grid {
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
+
+        .job-card {
+          padding: 15px;
+        }
+
+        .job-card h3 {
+          font-size: 1em;
+        }
+
+        .footer-links {
+          flex-direction: column;
+          align-items: center;
+          gap: 1.5rem;
+        }
+      }
+
+      .footer {
+        background-color: var(--dark-color);
+        color: white;
+        padding: 1.3rem 5%;
+        margin-top: auto;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+      }
+
+      .footer-links a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: var(--primary-color);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="/">
+          <img
+            src="/assets/favicon.png"
+            alt="Job Portal Logo"
+            style="width: 150px; height: 50px; margin-right: 10px"
+          />
+        </a>
+      </div>
+      <a href="/logout" class="logout-btn"
+        >Logout <i class="fas fa-sign-out-alt"></i
+      ></a>
+    </nav>
+
+    <div class="content">
+      <h1 class="page-title">My Job Applications</h1>
+      <p class="page-description">
+        Here you'll find a summary of all your job applications. Track the
+        status of each application, view details about the roles you've applied
+        for, and stay updated on your application progress.
+      </p>
+
+      <div th:if="${session.success}" class="alert-message success">
+        <span th:text="${session.success}"></span>
+        <th:block th:text="${@messageRemover.remove()}"></th:block>
+      </div>
+      <div th:if="${session.error}" class="alert-message error">
+        <span th:text="${session.error}"></span>
+        <th:block th:text="${@messageRemover.remove()}"></th:block>
+      </div>
+
+      <div class="jobs-grid">
+        <div class="job-card" th:each="x:${applications}">
+          <h3 th:text="${x.job.role}">Role</h3>
+          <div class="job-detail">
+            <strong><i class="fas fa-building"></i> Company:</strong>
+            <span th:text="${x.job.recruiter.companyName}"></span>
+          </div>
+          <div class="job-detail">
+            <strong><i class="fas fa-money-bill-wave"></i> Package:</strong>
+            <span th:text="${x.job.ctc}+' LPA'"></span>
+          </div>
+          <div class="job-detail">
+            <strong><i class="fas fa-info-circle"></i> Description:</strong>
+            <span th:text="${x.job.description}"></span>
+          </div>
+          <div class="job-detail">
+            <strong><i class="fas fa-calendar"></i> Applied On:</strong>
+            <span th:text="${x.appliedTime}"></span>
+          </div>
+          <div class="job-detail">
+            <strong><i class="fas fa-check-circle"></i> Status:</strong>
+            <span
+              class="status-badge"
+              th:classappend="${x.status == 'PENDING' ? 'status-pending' : 
+                                         x.status == 'ACCEPTED' ? 'status-accepted' :
+                                         x.status == 'SCHEDULED' ? 'status-scheduled' : 'status-rejected'}"
+              th:text="${x.status}"
+            >
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="/about-us">About Us</a>
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const alerts = document.querySelectorAll(".alert-message");
+        alerts.forEach((alert) => {
+          setTimeout(() => {
+            alert.style.display = "none";
+          }, 2000);
+        });
+      });
+    </script>
+  </body>
+</html>

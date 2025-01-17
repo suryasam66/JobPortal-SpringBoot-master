@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Job Portal - Privacy Policy and Data Protection">
+    <meta name="keywords" content="privacy policy, data protection, job portal, terms">
+    <meta name="author" content="Job Portal">
+    <meta name="robots" content="index, follow">
+
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <title>Workify - Privacy Policy</title>
+
+    <style>
+        :root {
+            --primary-color: #6A1B9A;
+            --secondary-color: #00897B;
+            --dark-color: #1f2937;
+            --light-color: #ffffff;
+            --gray-color: #f4f4f9;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            background-color: var(--gray-color);
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.98);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .register-btn {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .login-btn {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .hero {
+            padding: 7rem 5% 3rem;
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 2rem;
+        }
+
+        .privacy-section {
+            padding: 4rem 5%;
+            min-height: calc(100vh - 80px);
+        }
+
+        .privacy-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .privacy-title {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 2rem;
+            text-align: center;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--dark-color);
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .privacy-text {
+            color: var(--dark-color);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .privacy-images {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        #sec-img{
+            margin-left: 5rem;
+        }
+        .privacy-images img {
+            width: 100%;
+            max-width: 900px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 2rem 5%;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .privacy-section {
+                padding: 6rem 1rem 2rem;
+            }
+
+            .privacy-content {
+                padding: 2rem;
+            }
+
+            .privacy-title {
+                font-size: 2rem;
+            }
+
+            .nav-buttons {
+                gap: 1rem;
+            }
+
+            .nav-btn {
+                padding: 0.6rem 1.5rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+
+            .privacy-images img {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/">
+                <img src="/assets/favicon.png" alt="Job Portal Logo" style="width: 150px; height: 50px; margin-right: 10px;">
+               
+            </a>
+        </div>
+        <div class="nav-buttons">
+            <a href="/login"><button class="nav-btn login-btn">Login</button></a>
+            <a href="/jobseeker/register"><button class="nav-btn register-btn">Register</button></a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Welcome to Workify</h1>
+        <p>We are committed to safeguarding your privacy and ensuring the security of your personal information. Explore how we protect and utilize your data for better services.</p>
+        <img src="https://www.fisem.it/site/wp-content/uploads/2023/03/privacy-policy-fisem.jpg" alt="Privacy Policy Illustration">
+    </section>
+
+   
+    <section class="privacy-section">
+        <div class="privacy-content">
+            <h2 class="privacy-title">Privacy Policy</h2>
+            <p class="privacy-text">
+                At Workify, we value your trust and are committed to protecting your privacy. This Privacy Policy outlines the types of information we collect, how we use it, and the measures we take to ensure it is safeguarded.
+            </p>
+
+            <h3 class="section-title">1. Information We Collect</h3>
+            <p class="privacy-text">
+                We collect personal data such as your name, email address, contact information, and any other details you provide when creating an account or applying for jobs. Additionally, we may gather non-personal data like browser type and IP address for analytics purposes.
+            </p>
+
+            <div class="privacy-images">
+                <img src="https://alwofod.sa/wp-content/uploads/2023/04/collecting-data-at-Events-end.png" alt="Data Security">
+              
+               
+            </div>
+
+            <h3 class="section-title">2. How We Use Your Information</h3>
+            <p class="privacy-text">
+                Your information is used to provide personalized job recommendations, process applications, improve our services, and communicate with you effectively. We do not share your data with third parties without your explicit consent.
+            </p>
+            <div class="privacy-images">
+                <img src="https://cdn.ten10.ie/wp-content/uploads/2023/04/Privacy-Policy-Page-The-Ultimate-Guide-Blog-Banner.png" alt="Data Security">
+                
+               
+            </div>
+
+            <h3 class="section-title">3. Data Security</h3>
+            <p class="privacy-text">
+                We implement robust security measures, including encryption and secure servers, to protect your data from unauthorized access, alteration, or disclosure. However, no system is entirely foolproof, and we encourage you to protect your account credentials.
+              
+            </p>
+            <div class="privacy-images">
+                <img src="https://thumbs.dreamstime.com/b/data-security-cybersecurity-concept-265492657.jpg" alt="Data Security">
+                
+               
+            </div>
+
+            <h3 class="section-title">4. Your Rights</h3>
+            <p class="privacy-text">
+                You have the right to access, update, or delete your personal data at any time. If you wish to exercise these rights or have concerns about your data, please contact us at privacy@workify.com.
+            </p>
+
+            <div class="privacy-images">
+                <img src="https://tse2.mm.bing.net/th?id=OIP.TUYcI4wtIj5c1YEqIY7tLAHaEK&pid=Api&P=0&h=180" alt="Data Security">
+                
+               
+            </div>
+            <h3 class="section-title">5. Updates to this Policy</h3>
+            <p class="privacy-text">
+                We may update this Privacy Policy from time to time. Any changes will be communicated to you via email or through a notification on our website. Please review the policy periodically to stay informed.
+            </p>
+
+            <div class="privacy-images">
+                <img src="https://competitivecompliance.co/wp-content/uploads/2020/09/Create-Your-Privacy-Policy.png" alt="Data Security">
+                
+               
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="/about-us">About Us</a>
+                <a href="/privacy-policy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                
+            </div>
+            <p>&copy; 2025 Workify. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
